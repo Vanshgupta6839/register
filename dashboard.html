@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Dashboard</title>
+<style>
+body{background:#f0f2f5;font-family:Arial, sans-serif;display:flex;justify-content:center;align-items:center;height:100vh;margin:0;}
+.container{background:white;padding:30px;border-radius:12px;box-shadow:0 5px 15px rgba(0,0,0,0.1);width:400px;text-align:center;}
+button{padding:10px 20px;margin-top:20px;background:#0077cc;color:white;border:none;border-radius:6px;cursor:pointer;}
+button:hover{background:#005fa3;}
+</style>
+</head>
+<body>
+<div class="container">
+<h2 id="welcomeText">Welcome!</h2>
+<p>Please remember to keep your Gmail and password safe.</p>
+<button id="logoutBtn">Logout</button>
+</div>
+
+<script type="module">
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+
+const SUPABASE_URL = "https://dfrjavvcaeuadoplkbom.supabase.co";
+const SUPABASE_KEY = "sb_publishable_Bs2mt5c4pj3568ph4MGwjQ_b9eBIq3-";
+const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+
+const username = sessionStorage.getItem("username") || "User";
+document.getElementById("welcomeText").textContent = "Welcome, " + username + "!";
+
+document.getElementById("logoutBtn").addEventListener("click", async () => {
+  await supabase.auth.signOut();
+  sessionStorage.removeItem("username");
+  window.location.href = "login.html";
+});
+</script>
+</body>
+</html>

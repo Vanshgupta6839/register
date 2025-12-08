@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Register</title>
+<style>
+body{background:#f0f2f5;font-family:Arial;display:flex;justify-content:center;align-items:center;height:100vh;margin:0;}
+.container{background:white;padding:30px;border-radius:12px;box-shadow:0 5px 15px rgba(0,0,0,0.1);width:360px;}
+h2{text-align:center;margin-bottom:20px;}
+input{width:100%;padding:10px;margin:8px 0;border:1px solid #ccc;border-radius:6px;font-size:14px;}
+button{width:100%;padding:12px;background:#0077cc;color:white;border:none;border-radius:6px;font-size:16px;cursor:pointer;}
+button:hover{background:#005fa3;}
+.switch{text-align:center;margin-top:12px;color:#0077cc;cursor:pointer;}
+</style>
+</head>
+<body>
+<div class="container">
+<h2>Register</h2>
+<input id="fullName" placeholder="Full Name">
+<input id="phone" placeholder="Phone Number">
+<input id="email" placeholder="Email">
+<input id="username" placeholder="Username">
+<input id="password" type="password" placeholder="Password">
+<button id="registerBtn">Register</button>
+<div class="switch" onclick="window.location.href='login.html'">Already have an account? Login</div>
+</div>
+
+<script type="module" src="/src/register.ts"></script>
+</body>
+</html>
