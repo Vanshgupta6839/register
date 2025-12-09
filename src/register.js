@@ -15,14 +15,15 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        // Save user
         const user = { name, email, phone, password };
         localStorage.setItem("user", JSON.stringify(user));
 
-        msg.innerHTML = "<p class='success'>Registration Successful! 🎉</p>";
+        // ✅ Popup success message
+        alert("Successfully Registered! Please check your email.");
 
+        // Redirect to login after 2 seconds
         setTimeout(() => {
             window.location.href = "login.html";
-        }, 1500);
+        }, 2000);
     });
 });
