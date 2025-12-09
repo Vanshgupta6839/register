@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("registerForm");
-    const msg = document.getElementById("msg");
 
     form.addEventListener("submit", (e) => {
         e.preventDefault();
@@ -18,10 +17,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const user = { name, email, phone, password };
         localStorage.setItem("user", JSON.stringify(user));
 
-        // ✅ Popup success message
         alert("Successfully Registered! Please check your email.");
 
-        // Redirect to login after 2 seconds
         setTimeout(() => {
             window.location.href = "login.html";
         }, 2000);

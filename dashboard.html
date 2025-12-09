@@ -1,39 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Dashboard</title>
-    <style>
-        body { 
-            font-family: Arial;
-            text-align: center;
-            padding-top: 50px;
-        }
-        button {
-            padding: 10px 20px;
-            margin-top: 20px;
-            background: red;
-            border: none;
-            color: white;
-            cursor: pointer;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome Dashboard</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<div class="container" style="text-align:center; padding-top:50px;">
     <h1>Welcome, <span id="username"></span> 🎉</h1>
-
     <button onclick="logout()">Logout</button>
+</div>
 
-    <script>
-        const name = localStorage.getItem("loggedInUser");
-        document.getElementById("username").textContent = name || "User";
+<script>
+    const name = localStorage.getItem("loggedInUser");
+    document.getElementById("username").textContent = name || "User";
 
-        function logout() {
-            localStorage.removeItem("loggedInUser");
-            window.location.href = "login.html";
-        }
-    </script>
-
+    function logout() {
+        localStorage.removeItem("loggedInUser");
+        window.location.href = "login.html";
+    }
+</script>
 </body>
 </html>
