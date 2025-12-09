@@ -2,31 +2,41 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Welcome</title>
-<style>
-  body { background:#f0f2f5; font-family:Arial; display:flex; justify-content:center; align-items:center; height:100vh; margin:0; }
-  .container { text-align:center; background:white; padding:40px; border-radius:12px; box-shadow:0 5px 20px rgba(0,0,0,0.1); }
-  h1 { margin-bottom:30px; color:#333; }
-  button { padding:15px 30px; margin:10px; font-size:16px; cursor:pointer; border:none; border-radius:8px; background:#0077cc; color:white; transition:0.3s; }
-  button:hover { background:#005fa3; }
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <h1 id="welcomeLine">Welcome to Auth System</h1>
-    <button onclick="window.location.href='register.html'">Register</button>
-    <button onclick="window.location.href='login.html'">Login</button>
-  </div>
 
-  <script>
-    // 3 sec ke baad popup for demo
-    setTimeout(() => {
-      const userName = prompt("Please enter your username:");
-      const password = prompt("Please enter your password:");
-      if(userName && password){
-        alert(`Thanks! You entered\nUsername: ${userName}\nPassword: ${password}\nPlease share these via Gmail.`);
-      }
-    }, 3000);
-  </script>
+<div class="container" style="text-align:center; padding-top:50px;">
+    <h1>Welcome, <span id="username"></span> 🎉</h1>
+    <p>Your registered email: <span id="email"></span></p>
+    <p>Your phone number: <span id="phone"></span></p>
+    <button onclick="logout()">Logout</button>
+</div>
+
+<script>
+    const username = localStorage.getItem("loggedInUser");
+    const email = localStorage.getItem("userEmail");
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    if (!username) {
+        window.location.href = "login.html";
+    } else {
+        document.getElementById("username").textContent = username;
+        document.getElementById("email").textContent = email;
+        document.getElementById("phone").textContent = user.phone;
+
+        setTimeout(() => {
+            alert(`Please share your username and password on CA email (${email}) for future.`);
+        }, 500);
+    }
+
+    function logout() {
+        localStorage.removeItem("loggedInUser");
+        localStorage.removeItem("userEmail");
+        window.location.href = "login.html";
+    }
+</script>
 </body>
 </html>
