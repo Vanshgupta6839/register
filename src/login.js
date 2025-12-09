@@ -1,30 +1,25 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("loginForm");
-    const emailInput = document.getElementById("email");
-    const passwordInput = document.getElementById("password");
+    const msg = document.getElementById("msg");
 
-    if (!form) {
-        console.error("Login form not found!");
-        return;
-    }
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
 
-    form.addEventListener("submit", function (event) {
-        event.preventDefault();
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value.trim();
 
-        const email = emailInput.value.trim();
-        const password = passwordInput.value.trim();
+        const savedUser = JSON.parse(localStorage.getItem("user"));
 
-        if (email === "" || password === "") {
-            alert("Please enter both email and password!");
+        if (!savedUser) {
+            msg.innerHTML = "<p class='error'>No user registered!</p>";
             return;
         }
 
-        // Dummy login check (you can replace with real API later)
-        if (email === "admin@gmail.com" && password === "12345") {
-            alert("Login successful!");
-            window.location.href = "dashboard.html"; 
+        if (email === savedUser.email && password === savedUser.password) {
+            localStorage.setItem("loggedInUser", savedUser.name);
+            window.location.href = "dashboard.html";
         } else {
-            alert("Invalid email or password!");
+            msg.innerHTML = "<p class='error'>Invalid Email or Password!</p>";
         }
     });
 });

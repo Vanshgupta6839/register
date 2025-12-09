@@ -1,19 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8">
     <title>Dashboard</title>
+    <style>
+        body { 
+            font-family: Arial;
+            text-align: center;
+            padding-top: 50px;
+        }
+        button {
+            padding: 10px 20px;
+            margin-top: 20px;
+            background: red;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to our page 🎉</h1>
-    <p>You are logged in.</p>
+
+    <h1>Welcome, <span id="username"></span> 🎉</h1>
 
     <button onclick="logout()">Logout</button>
 
     <script>
+        const name = localStorage.getItem("loggedInUser");
+        document.getElementById("username").textContent = name || "User";
+
         function logout() {
+            localStorage.removeItem("loggedInUser");
             window.location.href = "login.html";
         }
     </script>
+
 </body>
 </html>
